@@ -1,6 +1,8 @@
 import type { NextPage } from "next";
+import { getSession } from "next-auth/react";
 import Head from "next/head";
 import Center from "../src/components/center";
+import Player from "../src/components/player";
 import Sidebar from "../src/components/sidebar";
 
 const Home: NextPage = () => {
@@ -17,9 +19,21 @@ const Home: NextPage = () => {
         <Center />
       </main>
 
-      <div>{/* Player */}</div>
+      <div className="sticky bottom-0">
+        <Player />
+      </div>
     </div>
   );
+};
+
+export async function getServerSideProps(context: any) {
+  const session = await getSession(context);
+
+  return {
+    props: {
+      session
+    }
+  };
 };
 
 export default Home;
