@@ -1,6 +1,7 @@
-import type { NextPage } from 'next';
-import Head from 'next/head';
-import Sidebar from '../src/components/sidebar';
+import type { NextPage } from "next";
+import Head from "next/head";
+import Center from "../src/components/center";
+import Sidebar from "../src/components/sidebar";
 
 const Home: NextPage = () => {
   return (
@@ -11,14 +12,12 @@ const Home: NextPage = () => {
         {/* <link rel="icon" href="/favicon.ico" /> */}
       </Head>
 
-      <main>
+      <main className="flex">
         <Sidebar />
-        {/* Center */}
+        <Center />
       </main>
 
-      <div>
-        {/* Player */}
-      </div>
+      <div>{/* Player */}</div>
     </div>
   );
 };
