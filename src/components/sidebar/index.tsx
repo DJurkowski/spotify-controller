@@ -4,8 +4,8 @@ import {
   LibraryIcon,
   PlusCircleIcon,
   RssIcon,
-  HeartIcon,
 } from "@heroicons/react/outline";
+import { HeartIcon } from "@heroicons/react/solid";
 import { useSession, signOut } from "next-auth/react";
 import { useState, useEffect } from "react";
 import { useRecoilState } from "recoil";
@@ -31,7 +31,7 @@ const Sidebar = () => {
   }, [session, spotifyApi]);
 
   return (
-    <div className="text-gray-500 p-5 text-xs lg:text-sm border-r border-gray-900 overflow-scroll scrollbar-hide h-screen sm:max-w-[12rem] lg:max-w-[15rem] hidden md:inline-flex">
+    <div className="text-gray-500 p-5 text-xs lg:text-sm border-r border-gray-900 overflow-scroll scrollbar-hide h-screen sm:max-w-[12rem] lg:max-w-[15rem] hidden md:inline-flex pb-36">
       <div className="space-y-4">
         {/* <Button text="Log out" Icon={HomeIcon} onClick={() => signOut()}/> */}
         <Button text="Home" Icon={HomeIcon} />
@@ -40,7 +40,7 @@ const Sidebar = () => {
         <hr className="border-t-[0.1px] border-gray-900" />
 
         <Button text="Create Playlist" Icon={PlusCircleIcon} />
-        <Button text="Like songs" Icon={HeartIcon} />
+        <Button text="Like songs" Icon={HeartIcon} classIconString="text-green-500"/>
         <Button text="Your episodes" Icon={RssIcon} />
 
         <hr className="border-t-[0.1px] border-gray-900" />
