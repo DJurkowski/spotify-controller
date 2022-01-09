@@ -3,9 +3,11 @@ import Image from 'next/image';
 import Logo from '../assets/logo.png';
 
 const Login = ({ providers }: any) => {
+  
   return (
     <div className='flex flex-col items-center bg-black min-h-screen w-full justify-center'>
       <Image className="w-52 mb-5" src={Logo} alt="Spotify" width={'52px'} height={'52px'} />
+      {console.log(providers)}
       {Object.values(providers).map((provider: any, index) => (
         <div key={provider.name}>
           <button 
