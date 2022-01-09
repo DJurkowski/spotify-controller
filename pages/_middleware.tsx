@@ -3,7 +3,8 @@ import { NextResponse } from "next/server";
 
 export async function middleware(req: any) {
   const secret = process.env.JWT_SECRET || "";
-  const token = await getToken({ req, secret });
+  const secureCookie = process.env.NEXTAUTH_URL?.startsWith("https://")??!!process.env.NEXTAUTH_URL;
+  const token = await getToken({ req, secret, secureCookie});
 
   const { pathname } = req.nextUrl;
 
