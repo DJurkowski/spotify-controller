@@ -5,6 +5,8 @@ import moment from 'moment';
 import useSpotify from "../../../../hooks/useSpotify";
 import { useRecoilState } from "recoil";
 import { currentTrackState, isPlayingState } from "../../../../atoms/songAtom";
+import { isErrorState, errorMessageState } from "../../../../atoms/errorAtom";
+import { Modal } from "../../modal";
 
 interface SongProps {
   song: any;
@@ -15,6 +17,8 @@ const Song = ({ song, order }: SongProps) => {
   const spotifyApi = useSpotify();
   const [currentTrack, setCurrentTrack] = useRecoilState(currentTrackState);
   const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState);
+  const [isError, setIsError] = useRecoilState(isErrorState);
+  const [errorMessage, setErrorMessage] = useRecoilState(errorMessageState);
 
   const playSong = () => {
     setCurrentTrack(song.track.id);
@@ -22,6 +26,8 @@ const Song = ({ song, order }: SongProps) => {
     spotifyApi.play({
       uris: [song.track.uri],
     }).catch((err) => {
+      setIsError(true);
+      setErrorMessage(err.message);
       console.log(err.message);
     });
     console.log(song);
