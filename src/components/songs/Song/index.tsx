@@ -20,7 +20,7 @@ const Song = ({ song, order }: SongProps) => {
     setCurrentTrack(song.track.id);
     setIsPlaying(true);
     spotifyApi.play({
-      uris: [song.track.id],
+      uris: [song.track.uri],
     }).catch((err) => {
       console.log(err.message);
     });
